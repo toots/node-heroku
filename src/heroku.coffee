@@ -10,16 +10,17 @@ class Heroku
 
   request: (opts, fn) =>
     expects = opts.expects || 200
-    
+    auth    = new Buffer(":#{@key}").toString "base64"
+
     headers =
-      "X-Heroku-API-Version" : "3"
       "Accept"               : "application/json"
+      "Authorization"        : "Basic #{auth}"
+      "X-Heroku-API-Version" : "3"
 
     opts =
       host    : @host
       method  : opts.method
       path    : opts.path
-      auth    : ":#{@key}"
       headers : headers
 
     if query?
