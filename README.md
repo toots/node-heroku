@@ -5,7 +5,10 @@ Welcome to this (almost) untested, mostly rip-off of [heroku/heroku.rb](https://
 
 This module provides exactly the same API as heroku's official client. Each function has been carefully fed to monkeys who, through patience and understanding, had been trained to translate basic ruby into coffee script.
 
-![A monkey in action](https://github.com/toots/node-heroku/raw/master/misc/monkey.png)
+<table>
+  <tr><td><img src="https://github.com/toots/node-heroku/raw/master/misc/monkey.png" alt="A monkey in action" title="A monkey in action"/></td></tr>
+  <tr><td>A monkey in action</td></tr>
+</table>
 
 Those monkeys' education cost a lot so we could not afford tests for this code. However, we guarantee that no animal was hurt while preparing this module.
 
