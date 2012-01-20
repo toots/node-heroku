@@ -1,0 +1,76 @@
+class Heroku
+  @inherited = []
+
+  constructor: (opts) ->
+    @key  = opts.key    || process.env.HEROKU_API_KEY
+    @host = opts.host   || "api.heroku.com"
+    @http = require(opts.scheme || "https")
+
+    constructor.apply this, arguments for constructor in Heroku.inherited
+
+  request: (opts, fn) =>
+    expects = opts.expects || 200
+    
+    headers =
+      "X-Heroku-API-Version" : "3"
+      "Accept"               : "application/json"
+
+    opts =
+      host    : @host
+      method  : opts.method
+      path    : opts.path
+      auth    : ":#{@key}"
+      headers : headers
+
+    if query?
+      query = JSON.stringify query
+
+      opts.headers["Content-Type"]   = "application/json"
+      opts.headers["Content-Length"] = query.length
+
+    req = @http.request opts, (res) ->
+      return fn res, null unless res.statusCode == expects
+
+      data = ""
+      res.on "data", (buf) -> data += buf
+      res.on "end", ->
+        try
+          data = JSON.parse data
+          fn null, data
+        catch err
+          fn err, null
+
+    req.end query
+
+{AddOns}        = require "./addons"
+{Apps}          = require "./apps"
+{Collaborators} = require "./collaborators"
+{ConfigVars}    = require "./config_vars"
+{Domains}       = require "./domains"
+{Keys}          = require "./keys"
+{Logs}          = require "./logs"
+{Processes}     = require "./processes"
+{Releases}      = require "./releases"
+{Stacks}        = require "./stacks"
+
+# From coffee script FAQ..
+extend = (obj, mixin) ->
+  for name, method of mixin
+    obj[name] = method
+
+include = (klass, mixin) ->
+  extend klass.prototype, mixin.prototype
+  Heroku.inherited.push mixin
+
+include Heroku, AddOns
+include Heroku, Apps
+include Heroku, Collaborators
+include Heroku, ConfigVars
+include Heroku, Domains
+include Heroku, Keys
+include Heroku, Logs
+include Heroku, Processes
+include Heroku, Releases
+include Heroku, Stacks
+
+module.exports.Heroku = Heroku
