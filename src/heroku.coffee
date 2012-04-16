@@ -9,8 +9,9 @@ class Heroku
     constructor.apply this, arguments for constructor in Heroku.inherited
 
   request: (opts, fn) =>
-    expects = opts.expects || 200
     auth    = new Buffer(":#{@key}").toString "base64"
+    expects = opts.expects || 200
+    query   = opts.query
 
     headers =
       "Accept"               : "application/json"
@@ -18,10 +19,10 @@ class Heroku
       "X-Heroku-API-Version" : "3"
 
     opts =
-      host    : @host
-      method  : opts.method
-      path    : opts.path
-      headers : headers
+      hostname : @host
+      method   : opts.method
+      path     : opts.path
+      headers  : headers
 
     if query?
       query = JSON.stringify query
@@ -39,7 +40,7 @@ class Heroku
           data = JSON.parse data
           fn null, data
         catch err
-          fn err, null
+          fn null, data
 
     req.end query
 
