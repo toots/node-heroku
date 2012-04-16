@@ -38,9 +38,9 @@ class Heroku
       res.on "end", ->
         try
           data = JSON.parse data
-          fn null, data
         catch err
-          fn null, data
+
+        fn null, data
 
     req.end query
 
