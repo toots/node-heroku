@@ -42,3 +42,9 @@ class module.exports.Apps
       method : "PUT",
       path   : "/apps/#{app}",
       query  : app_params(params)}, fn
+
+  post_app_database_reset: (app, fn) =>
+    @request {
+      method : "POST",
+      path   : "/apps/#{app}/database/reset" 
+      query  : {}}, fn

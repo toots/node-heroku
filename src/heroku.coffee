@@ -2,20 +2,19 @@ class Heroku
   @inherited = []
 
   constructor: (opts) ->
-    @key  = opts.key    || process.env.HEROKU_API_KEY
+    @auth = new Buffer(":#{opts.key || process.env.HEROKU_API_KEY}").toString "base64"
     @host = opts.host   || "api.heroku.com"
     @http = require(opts.scheme || "https")
 
     constructor.apply this, arguments for constructor in Heroku.inherited
 
   request: (opts, fn) =>
-    auth    = new Buffer(":#{@key}").toString "base64"
     expects = opts.expects || 200
     query   = opts.query
 
     headers =
       "Accept"               : "application/json"
-      "Authorization"        : "Basic #{auth}"
+      "Authorization"        : "Basic #{@auth}"
       "X-Heroku-API-Version" : "3"
 
     opts =
