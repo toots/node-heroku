@@ -75,3 +75,4 @@ include Heroku, Releases
 include Heroku, Stacks
 
 module.exports.Heroku = Heroku
+module.exports.PGBackups = require("./pgbackups").PGBackups
