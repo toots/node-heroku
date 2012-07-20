@@ -13,5 +13,8 @@ class module.exports.Collaborators
     @request {
       method : "POST",
       path   : "/apps/#{app}/collaborators",
-      query  : 
-        "collaborator[email]" : email}, fn
+      expects: 201,
+      query  :
+        collaborator :
+          email: email
+      }, fn
