@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/toots/node-heroku.png)](http://travis-ci.org/toots/node-heroku)
 Heroku client API for node
 ==========================
 
