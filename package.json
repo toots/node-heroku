@@ -20,6 +20,9 @@
       "test":"./test",   
       "src":"./src" 
     },
+  "scripts": {
+    "test": "cake spec"
+  },
   "engine": {"node": ">= 0.4.7", "npm": "1"},
   "licences":
     [
