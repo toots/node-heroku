@@ -1,7 +1,7 @@
 {
   "name": "heroku",
   "description": "Heroku API bindings for node.", 
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "http://github.com/toots/node-heroku",
   "author": "Romain Beauxis <toots@rastageeks.org",
   "repository":
