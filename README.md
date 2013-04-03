@@ -39,3 +39,12 @@ For those who prefer to have it with more caffeine, here's the same example in
 
     client.get_releases "my_app", (error, result) ->
       (..your code here..)
+
+### License
+
+This code is dual licensed under the Beerware / Lunchware license.  See below for details:
+
+    THE BEER-WARE / LUNCH-WARE LICENSE (Revision 42):
+    <toots@rastageeks.org> wrote this file. As long as you retain this notice you
+    can do whatever you want with this stuff. If we meet some day, and you think
+    this stuff is worth it, you can buy me a beer and/or lunch in return -- Romain Beauxis
