@@ -13,5 +13,4 @@ class module.exports.ConfigVars
     @request {
       method : "PUT",
       path   : "/apps/#{app}/config_vars",
-      query  : 
-        body : JSON.stringify vars}, fn
+      query  : vars}, fn
