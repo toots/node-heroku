@@ -1,8 +1,8 @@
 class module.exports.Collaborators
   delete_collaborator: (app, email, fn) =>
     @request {
-      method : DELETE,
-      path   : "/apps/#{app}/collaborators/#{email}"}, fn
+      method : "DELETE",
+      path   : "/apps/#{app}/collaborators/#{encodeURIComponent(email)}"}, fn
 
   get_collaborators: (app, fn) =>
     @request {
