@@ -1,7 +1,7 @@
 class module.exports.Collaborators
   delete_collaborator: (app, email, fn) =>
     @request {
-      method : DELETE,
+      method : "DELETE",
       path   : "/apps/#{app}/collaborators/#{email}"}, fn
 
   get_collaborators: (app, fn) =>
