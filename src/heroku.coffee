@@ -34,7 +34,11 @@ class Heroku
       res.on "data", (buf) -> data += buf
       res.on "end", ->
         unless res.statusCode == expects
-          return fn { data: data, response: res }, null
+          return fn
+            options  : opts
+            request  : req
+            response : res
+            data     : data
 
         try
           data = JSON.parse data
