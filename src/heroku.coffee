@@ -36,6 +36,7 @@ class Heroku
         unless res.statusCode == expects
           return fn
             options  : opts
+            query    : query
             request  : req
             response : res
             data     : data
