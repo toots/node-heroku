@@ -30,11 +30,12 @@ class Heroku
       opts.headers["Content-Length"] = query.length
 
     req = @http.request opts, (res) ->
-      return fn res, null unless res.statusCode == expects
-
       data = ""
       res.on "data", (buf) -> data += buf
       res.on "end", ->
+        unless res.statusCode == expects
+          return fn { data: data, response: res }, null
+
         try
           data = JSON.parse data
         catch err
