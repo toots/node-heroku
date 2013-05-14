@@ -1,7 +1,7 @@
 {
   "name": "heroku",
   "description": "Heroku API bindings for node.", 
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "http://github.com/toots/node-heroku",
   "author": "Romain Beauxis <toots@rastageeks.org",
   "repository":
@@ -27,8 +27,8 @@
   "licences":
     [
       {
-        "type":"GPL3",
-        "url": "http://www.gnu.org/licenses/gpl-3.txt"
+        "type":"Dual Beerware / Lunchware",
+        "url": "https://github.com/toots/node-heroku/blob/master/README.md#license"
       }
     ],
   "dependencies": {
