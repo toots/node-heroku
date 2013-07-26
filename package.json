@@ -32,7 +32,7 @@
       }
     ],
   "dependencies": {
-    "coffee-script" : "1.1.1",
-    "jasmine-node"  : "1.0.26"
+    "coffee-script" : "1.6.3",
+    "jasmine-node"  : "1.10.2"
   }
 }
