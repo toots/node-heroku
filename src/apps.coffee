@@ -30,7 +30,7 @@ class module.exports.Apps
       path    : "/apps",
       query   : @app_params(params)}, fn
 
-  post_app_server_maintenance: (app, new_server_maintenance, fn) =>
+  post_app_server_maintenance: (app, maintenance_mode, fn) =>
     @request {
       method : "POST",
       path   : "/apps/#{app}/server/maintenance",
