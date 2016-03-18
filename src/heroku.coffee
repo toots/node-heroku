@@ -2,11 +2,9 @@ class Heroku
   @inherited = []
 
   constructor: (opts) ->
-    @auth      = new Buffer(":#{opts.key || process.env.HEROKU_API_KEY}").toString "base64"
-    @host      = opts.host   || "api.heroku.com"
-    @http      = require(opts.scheme || "https")
-    @queryType = opts.queryType || "querystring"
-
+    @auth = new Buffer(":#{opts.key || process.env.HEROKU_API_KEY}").toString "base64"
+    @host = opts.host   || "api.heroku.com"
+    @http = require(opts.scheme || "https")
 
     constructor.apply this, arguments for constructor in Heroku.inherited
 
@@ -26,13 +24,8 @@ class Heroku
       headers  : headers
 
     if query?
-      if @queryType == "json"
-        query = JSON.stringify query
-        opts.headers["Content-Type"]  = "application/json"
-      else
-        query = require("querystring").stringify query
-        opts.headers["Content-Type"]  = "application/x-www-form-urlencoded"
-
+      query = JSON.stringify query
+      opts.headers["Content-Type"]  = "application/json"
       opts.headers["Content-Length"] = query.length
 
     req = @http.request opts, (res) ->
