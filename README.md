@@ -24,21 +24,24 @@ most regretfully, have to deny any liability regarding possible eye injury while
 
 That being said, here's a sample use:
 
-    heroku = require("heroku");
-    client = new heroku.Heroku({key: "deadbeef"});
-    client.get_releases("my_app", function (error, result) {
-      (...your code here...)
-    });
+```js
+heroku = require("heroku");
+client = new heroku.Heroku({key: "deadbeef"});
+client.get_releases("my_app", function (error, result) {
+  (...your code here...)
+});
+```
 
 For those who prefer to have it with more caffeine, here's the same example in
 [coffee-script](https://github.com/jashkenas/coffee-script):
+```coffeescript
+{Heroku} = require "heroku"
+client   = new Heroku
+  key : "deadbeef"
 
-    {Heroku} = require "heroku"
-    client   = new Heroku
-      key : "deadbeef"
-
-    client.get_releases "my_app", (error, result) ->
-      (..your code here..)
+client.get_releases "my_app", (error, result) ->
+  (..your code here..)
+```
 
 ### License
 
